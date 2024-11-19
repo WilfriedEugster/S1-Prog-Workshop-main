@@ -2,6 +2,7 @@
 #include "random.hpp"
 #include <cmath>
 #include <complex>
+#include <glm/gtx/matrix_transform_2d.hpp>
 
 #include <string>
 #include <iostream>
@@ -296,7 +297,7 @@ int iter_mandelbrot(std::complex<float> c, int iter_max = 10){
     return n;
 }
 
-sil::Image mandelbrot(int iter_max = 50, int width = 500, int height = 500){ // ⭐⭐⭐(⭐) Fractale de Mandelbrot 19
+sil::Image mandelbrot(int iter_max = 50, int width = 500, int height = 500){ // ⭐⭐⭐(⭐) Fractale de Mandelbrot
     sil::Image image{width, height};
 
     for (int x{0}; x < width; x++)
@@ -311,6 +312,137 @@ sil::Image mandelbrot(int iter_max = 50, int width = 500, int height = 500){ // 
     return image;
 }
 
+float bayer_matrix_4x4[][4] = {
+    {    -0.5,       0,  -0.375,   0.125 },
+    {    0.25,   -0.25,   0.375, - 0.125 },
+    { -0.3125,  0.1875, -0.4375,  0.0625 },
+    {  0.4375, -0.0625,  0.3125, -0.1875 },
+};
+
+void dithering_4x4(sil::Image& image, float r = 1.f){ // ⭐⭐⭐(⭐) Tramage 20
+    float gray_scale = 0.f;
+    for (int x{0}; x < image.width(); x++)
+    {
+        for (int y{0}; y < image.height(); y++)
+        {
+            gray_scale = brightness(image.pixel(x, y)) + r * bayer_matrix_4x4[y%4][x%4];
+            if (gray_scale > 0.5f)
+                gray_scale = 1.f;
+            else
+                gray_scale = 0.f;
+            image.pixel(x, y) = glm::vec3{gray_scale};
+        }
+    }
+}
+
+void new_min(float cur, float& min){
+    if (cur < min)
+        min = cur;
+}
+
+void new_max(float cur, float& max){
+    if (cur > max)
+        max = cur;
+}
+
+void bad_normalize(sil::Image& image){ // Normalisation de l'histogramme mais ça fait des couleurs bizarres
+    glm::vec3 min_rgb{1.f, 1.f, 1.f};
+    glm::vec3 max_rgb{0.f, 0.f, 0.f};
+    glm::vec3 cur_rgb{0.f, 0.f, 0.f};
+
+    for (int x{0}; x < image.width(); x++)
+    {
+        for (int y{0}; y < image.height(); y++)
+        {
+            cur_rgb = image.pixel(x, y);
+
+            new_min(cur_rgb.r, min_rgb.r);
+            new_min(cur_rgb.g, min_rgb.g);
+            new_min(cur_rgb.b, min_rgb.b);
+
+            new_max(cur_rgb.r, max_rgb.r);
+            new_max(cur_rgb.g, max_rgb.g);
+            new_max(cur_rgb.b, max_rgb.b);
+        }
+    }
+
+    glm::vec3 dif_rgb = max_rgb - min_rgb;
+
+    for (int x{0}; x < image.width(); x++)
+    {
+        for (int y{0}; y < image.height(); y++)
+        {
+            image.pixel(x, y) = (image.pixel(x, y) - min_rgb)/dif_rgb;
+        }
+    }
+}
+
+void normalize(sil::Image& image){ // ⭐⭐⭐(⭐) Normalisation de l'histogramme
+    float min_bri{1.f};
+    float max_bri{0.f};
+    float cur_bri{0.f};
+
+    for (int x{0}; x < image.width(); x++)
+    {
+        for (int y{0}; y < image.height(); y++)
+        {
+            cur_bri = brightness(image.pixel(x, y));
+            new_min(cur_bri, min_bri);
+            new_max(cur_bri, max_bri);
+        }
+    }
+
+    float dif_bri = max_bri - min_bri;
+
+    for (int x{0}; x < image.width(); x++)
+    {
+        for (int y{0}; y < image.height(); y++)
+        {
+            image.pixel(x, y) = (image.pixel(x, y) - min_bri)/dif_bri;
+        }
+    }
+}
+
+void modif(sil::Image& image){ // Fonction qui fait des couleurs bizarres (je voulais tester)
+    glm::vec3 p{0.f};
+    for (int x{0}; x < image.width(); x++)
+    {
+        for (int y{0}; y < image.height(); y++)
+        {
+            p = image.pixel(x, y);
+            image.pixel(x, y).r = (0.f  ) * p.r + (0.f  ) * p.g + (1.f  ) * p.b;
+            image.pixel(x, y).g = (1.f  ) * p.r + (0.f  ) * p.g + (0.f  ) * p.b;
+            image.pixel(x, y).b = (0.f  ) * p.r + (1.f  ) * p.g + (0.f  ) * p.b;
+        }
+    }
+}
+
+glm::vec2 rotated(glm::vec2 point, glm::vec2 center_of_rotation, float angle)
+{
+    return glm::vec2{glm::rotate(glm::mat3{1.f}, angle) * glm::vec3{point - center_of_rotation, 0.f}} + center_of_rotation;
+}
+
+void vortex(sil::Image& image, float intensity = -0.08f){ // ⭐⭐⭐⭐ Vortex 22
+    sil::Image image_copy{image};
+    image = sil::Image{image.width(), image.height()};
+    glm::vec2 coordinates{0.f, 0.f};
+    float coor_x{0.f}, coor_y{0.f};
+    glm::vec2 center{image.width()/2.f, image.height()/2.f};
+    float distance = 0.f;
+    for (int x{0}; x < image.width(); x++)
+    {
+        for (int y{0}; y < image.height(); y++)
+        {
+            distance = pow(pow(center.x - x, 2) + pow(center.y - y, 2), 0.5);
+            coordinates = rotated(glm::vec2{x, y}, center, distance*intensity);
+            coor_x = static_cast<int>(coordinates.x);
+            coor_y = static_cast<int>(coordinates.y);
+            if (0 <= coor_x && coor_x < image.width() && 0 <= coor_y && coor_y < image.height())
+                image.pixel(coor_x, coor_y) = image_copy.pixel(x, y);
+        }
+    }
+}
+
 int main()
 {
     std::cout<<"Bonjour"<<std::endl;
@@ -319,10 +451,10 @@ int main()
     //sil::Image image{"images/photo_faible_contraste.jpg"};
     //sil::Image image{"images/photo.jpg"};
 
-    //sort_pixels_by_row(image);
-    image = mandelbrot();
+    vortex(image);
+    //image = mandelbrot();
 
     image.save("output/pouet.png");
 }
 
-// 18/31
+// 22/31
