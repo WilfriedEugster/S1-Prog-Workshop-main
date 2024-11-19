@@ -1,0 +1,231 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeDetermineSystem.cmake:211 (message)"
+      - "CMakeLists.txt:4 (project)"
+    message: |
+      The system is: Windows - 10.0.19043 - AMD64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:4 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      Microsoft (R) Build Engine version 15.8.168+ga8fba1ebd7 pour .NET Framework
+      Copyright (C) Microsoft Corporation. Tous droits réservés.
+      
+      La génération a démarré 18/11/2024 10:12:28.
+      Projet "M:\\Documents\\S1-Prog-Workshop-main\\build\\CMakeFiles\\3.27.6\\CompilerIdC\\CompilerIdC.vcxproj" sur le noud 1 (cibles par défaut).
+      PrepareForBuild:
+        Création du répertoire "Debug\\".
+        Création du répertoire "Debug\\CompilerIdC.tlog\\".
+      InitializeBuildStatus:
+        Création de "Debug\\CompilerIdC.tlog\\unsuccessfulbuild", car "AlwaysCreate" a été spécifié.
+      ClCompile:
+        C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.15.26726\\bin\\HostX86\\x86\\CL.exe /c /nologo /W0 /WX- /diagnostics:classic /Od /Oy- /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc141.pdb" /Gd /TC /analyze- /FC /errorReport:queue CMakeCCompilerId.c
+        CMakeCCompilerId.c
+      Link:
+        C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.15.26726\\bin\\HostX86\\x86\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdC.lib" /MACHINE:X86 /SAFESEH Debug\\CMakeCCompilerId.obj
+        CompilerIdC.vcxproj -> M:\\Documents\\S1-Prog-Workshop-main\\build\\CMakeFiles\\3.27.6\\CompilerIdC\\.\\CompilerIdC.exe
+      PostBuildEvent:
+        for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
+        :VCEnd
+        CMAKE_C_COMPILER=C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.15.26726\\bin\\Hostx86\\x86\\cl.exe
+      FinalizeBuildStatus:
+        Suppression du fichier "Debug\\CompilerIdC.tlog\\unsuccessfulbuild".
+        Mise à jour de l'horodatage "Debug\\CompilerIdC.tlog\\CompilerIdC.lastbuildstate".
+      Génération du projet "M:\\Documents\\S1-Prog-Workshop-main\\build\\CMakeFiles\\3.27.6\\CompilerIdC\\CompilerIdC.vcxproj" terminée (cibles par défaut).
+      
+      La génération a réussi.
+          0 Avertissement(s)
+          0 Erreur(s)
+      
+      Temps écoulé 00:00:00.96
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
+      
+      The C compiler identification is MSVC, found in:
+        M:/Documents/S1-Prog-Workshop-main/build/CMakeFiles/3.27.6/CompilerIdC/CompilerIdC.exe
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:4 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      Microsoft (R) Build Engine version 15.8.168+ga8fba1ebd7 pour .NET Framework
+      Copyright (C) Microsoft Corporation. Tous droits réservés.
+      
+      La génération a démarré 18/11/2024 10:12:29.
+      Projet "M:\\Documents\\S1-Prog-Workshop-main\\build\\CMakeFiles\\3.27.6\\CompilerIdCXX\\CompilerIdCXX.vcxproj" sur le noud 1 (cibles par défaut).
+      PrepareForBuild:
+        Création du répertoire "Debug\\".
+        Création du répertoire "Debug\\CompilerIdCXX.tlog\\".
+      InitializeBuildStatus:
+        Création de "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild", car "AlwaysCreate" a été spécifié.
+      ClCompile:
+        C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.15.26726\\bin\\HostX86\\x86\\CL.exe /c /nologo /W0 /WX- /diagnostics:classic /Od /Oy- /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc141.pdb" /Gd /TP /analyze- /FC /errorReport:queue CMakeCXXCompilerId.cpp
+        CMakeCXXCompilerId.cpp
+      Link:
+        C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.15.26726\\bin\\HostX86\\x86\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X86 /SAFESEH Debug\\CMakeCXXCompilerId.obj
+        CompilerIdCXX.vcxproj -> M:\\Documents\\S1-Prog-Workshop-main\\build\\CMakeFiles\\3.27.6\\CompilerIdCXX\\.\\CompilerIdCXX.exe
+      PostBuildEvent:
+        for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
+        :VCEnd
+        CMAKE_CXX_COMPILER=C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.15.26726\\bin\\Hostx86\\x86\\cl.exe
+      FinalizeBuildStatus:
+        Suppression du fichier "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
+        Mise à jour de l'horodatage "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.lastbuildstate".
+      Génération du projet "M:\\Documents\\S1-Prog-Workshop-main\\build\\CMakeFiles\\3.27.6\\CompilerIdCXX\\CompilerIdCXX.vcxproj" terminée (cibles par défaut).
+      
+      La génération a réussi.
+          0 Avertissement(s)
+          0 Erreur(s)
+      
+      Temps écoulé 00:00:01.03
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
+      
+      The CXX compiler identification is MSVC, found in:
+        M:/Documents/S1-Prog-Workshop-main/build/CMakeFiles/3.27.6/CompilerIdCXX/CompilerIdCXX.exe
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:4 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "M:/Documents/S1-Prog-Workshop-main/build/CMakeFiles/CMakeScratch/TryCompile-o7zx1p"
+      binary: "M:/Documents/S1-Prog-Workshop-main/build/CMakeFiles/CMakeScratch/TryCompile-o7zx1p"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:X86"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'M:/Documents/S1-Prog-Workshop-main/build/CMakeFiles/CMakeScratch/TryCompile-o7zx1p'
+        
+        Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/MSBuild/15.0/Bin/MSBuild.exe" cmTC_663fe.vcxproj /p:Configuration=Debug /p:Platform=win32 /p:VisualStudioVersion=15.0 /v:n
+        Microsoft (R) Build Engine version 15.8.168+ga8fba1ebd7 pour .NET Framework
+        Copyright (C) Microsoft Corporation. Tous droits réservés.
+        
+        La génération a démarré 18/11/2024 10:12:31.
+        Projet "M:\\Documents\\S1-Prog-Workshop-main\\build\\CMakeFiles\\CMakeScratch\\TryCompile-o7zx1p\\cmTC_663fe.vcxproj" sur le noud 1 (cibles par défaut).
+        PrepareForBuild:
+          Création du répertoire "cmTC_663fe.dir\\Debug\\".
+          Création du répertoire "M:\\Documents\\S1-Prog-Workshop-main\\build\\CMakeFiles\\CMakeScratch\\TryCompile-o7zx1p\\Debug\\".
+          Création du répertoire "cmTC_663fe.dir\\Debug\\cmTC_663fe.tlog\\".
+        InitializeBuildStatus:
+          Création de "cmTC_663fe.dir\\Debug\\cmTC_663fe.tlog\\unsuccessfulbuild", car "AlwaysCreate" a été spécifié.
+        ClCompile:
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.15.26726\\bin\\HostX86\\x86\\CL.exe /c /Zi /W1 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_663fe.dir\\Debug\\\\" /Fd"cmTC_663fe.dir\\Debug\\vc141.pdb" /Gd /TC /analyze- /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCCompilerABI.c"
+          Compilateur d'optimisation Microsoft (R) C/C++ version 19.15.26726 pour x86
+          Copyright (C) Microsoft Corporation. Tous droits réservés.
+          
+          cl /c /Zi /W1 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_663fe.dir\\Debug\\\\" /Fd"cmTC_663fe.dir\\Debug\\vc141.pdb" /Gd /TC /analyze- /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCCompilerABI.c"
+          CMakeCCompilerABI.c
+          
+        Link:
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.15.26726\\bin\\HostX86\\x86\\link.exe /ERRORREPORT:QUEUE /OUT:"M:\\Documents\\S1-Prog-Workshop-main\\build\\CMakeFiles\\CMakeScratch\\TryCompile-o7zx1p\\Debug\\cmTC_663fe.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"M:/Documents/S1-Prog-Workshop-main/build/CMakeFiles/CMakeScratch/TryCompile-o7zx1p/Debug/cmTC_663fe.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"M:/Documents/S1-Prog-Workshop-main/build/CMakeFiles/CMakeScratch/TryCompile-o7zx1p/Debug/cmTC_663fe.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_663fe.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_663fe.vcxproj -> M:\\Documents\\S1-Prog-Workshop-main\\build\\CMakeFiles\\CMakeScratch\\TryCompile-o7zx1p\\Debug\\cmTC_663fe.exe
+        FinalizeBuildStatus:
+          Suppression du fichier "cmTC_663fe.dir\\Debug\\cmTC_663fe.tlog\\unsuccessfulbuild".
+          Mise à jour de l'horodatage "cmTC_663fe.dir\\Debug\\cmTC_663fe.tlog\\cmTC_663fe.lastbuildstate".
+        Génération du projet "M:\\Documents\\S1-Prog-Workshop-main\\build\\CMakeFiles\\CMakeScratch\\TryCompile-o7zx1p\\cmTC_663fe.vcxproj" terminée (cibles par défaut).
+        
+        La génération a réussi.
+            0 Avertissement(s)
+            0 Erreur(s)
+        
+        Temps écoulé 00:00:01.43
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:4 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "M:/Documents/S1-Prog-Workshop-main/build/CMakeFiles/CMakeScratch/TryCompile-wu8w0q"
+      binary: "M:/Documents/S1-Prog-Workshop-main/build/CMakeFiles/CMakeScratch/TryCompile-wu8w0q"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:X86"
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'M:/Documents/S1-Prog-Workshop-main/build/CMakeFiles/CMakeScratch/TryCompile-wu8w0q'
+        
+        Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/MSBuild/15.0/Bin/MSBuild.exe" cmTC_6954e.vcxproj /p:Configuration=Debug /p:Platform=win32 /p:VisualStudioVersion=15.0 /v:n
+        Microsoft (R) Build Engine version 15.8.168+ga8fba1ebd7 pour .NET Framework
+        Copyright (C) Microsoft Corporation. Tous droits réservés.
+        
+        La génération a démarré 18/11/2024 10:12:33.
+        Projet "M:\\Documents\\S1-Prog-Workshop-main\\build\\CMakeFiles\\CMakeScratch\\TryCompile-wu8w0q\\cmTC_6954e.vcxproj" sur le noud 1 (cibles par défaut).
+        PrepareForBuild:
+          Création du répertoire "cmTC_6954e.dir\\Debug\\".
+          Création du répertoire "M:\\Documents\\S1-Prog-Workshop-main\\build\\CMakeFiles\\CMakeScratch\\TryCompile-wu8w0q\\Debug\\".
+          Création du répertoire "cmTC_6954e.dir\\Debug\\cmTC_6954e.tlog\\".
+        InitializeBuildStatus:
+          Création de "cmTC_6954e.dir\\Debug\\cmTC_6954e.tlog\\unsuccessfulbuild", car "AlwaysCreate" a été spécifié.
+        ClCompile:
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.15.26726\\bin\\HostX86\\x86\\CL.exe /c /Zi /W1 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_6954e.dir\\Debug\\\\" /Fd"cmTC_6954e.dir\\Debug\\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCXXCompilerABI.cpp"
+          Compilateur d'optimisation Microsoft (R) C/C++ version 19.15.26726 pour x86
+          Copyright (C) Microsoft Corporation. Tous droits réservés.
+          
+          cl /c /Zi /W1 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_6954e.dir\\Debug\\\\" /Fd"cmTC_6954e.dir\\Debug\\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCXXCompilerABI.cpp"
+          CMakeCXXCompilerABI.cpp
+          
+        Link:
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.15.26726\\bin\\HostX86\\x86\\link.exe /ERRORREPORT:QUEUE /OUT:"M:\\Documents\\S1-Prog-Workshop-main\\build\\CMakeFiles\\CMakeScratch\\TryCompile-wu8w0q\\Debug\\cmTC_6954e.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"M:/Documents/S1-Prog-Workshop-main/build/CMakeFiles/CMakeScratch/TryCompile-wu8w0q/Debug/cmTC_6954e.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"M:/Documents/S1-Prog-Workshop-main/build/CMakeFiles/CMakeScratch/TryCompile-wu8w0q/Debug/cmTC_6954e.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_6954e.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_6954e.vcxproj -> M:\\Documents\\S1-Prog-Workshop-main\\build\\CMakeFiles\\CMakeScratch\\TryCompile-wu8w0q\\Debug\\cmTC_6954e.exe
+        FinalizeBuildStatus:
+          Suppression du fichier "cmTC_6954e.dir\\Debug\\cmTC_6954e.tlog\\unsuccessfulbuild".
+          Mise à jour de l'horodatage "cmTC_6954e.dir\\Debug\\cmTC_6954e.tlog\\cmTC_6954e.lastbuildstate".
+        Génération du projet "M:\\Documents\\S1-Prog-Workshop-main\\build\\CMakeFiles\\CMakeScratch\\TryCompile-wu8w0q\\cmTC_6954e.vcxproj" terminée (cibles par défaut).
+        
+        La génération a réussi.
+            0 Avertissement(s)
+            0 Erreur(s)
+        
+        Temps écoulé 00:00:01.29
+        
+      exitCode: 0
+...

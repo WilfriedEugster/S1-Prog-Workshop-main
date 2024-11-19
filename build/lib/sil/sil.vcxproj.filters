@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="M:\Documents\S1-Prog-Workshop-main\lib\sil\src\sil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="M:\Documents\S1-Prog-Workshop-main\lib\sil\src\sil.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="M:\Documents\S1-Prog-Workshop-main\lib\sil\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{8F48BE00-BB10-3F37-A95A-DD441B384F74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{2CF1FF32-8136-3792-8150-9C8EFE0DE171}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
