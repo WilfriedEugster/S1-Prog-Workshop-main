@@ -1,6 +1,7 @@
 #include <sil/sil.hpp>
 #include "random.hpp"
 #include <cmath>
+#include <complex>
 
 #include <string>
 #include <iostream>
@@ -14,7 +15,7 @@ void keep_green_only(sil::Image& image){ // ⭐ Ne garder que le vert
     }
 }
 
-void channels_swap(sil::Image& image){ // ⭐ Échanger les canaux 
+void channels_swap(sil::Image& image){ // ⭐ Échanger les canaux
     float temp = 0.f;
     for (glm::vec3& color : image.pixels())
     {
@@ -103,7 +104,7 @@ void rgb_split(sil::Image& image, int decalage = 30){ // ⭐⭐ RGB split
     }
 }
 
-void brightness(sil::Image& image, int increase = 1){ // ⭐⭐ Luminosité
+void change_brightness(sil::Image& image, int increase = 1){ // ⭐⭐ Luminosité
     // Plus increase est grand, plus l'image est lumineuse
     // Plus increase est loin en dessous de 0, plus l'image est sombre
     float power = pow(2, -increase);
@@ -234,7 +235,7 @@ void swap_rectangles(sil::Image& image, int rect_width, int rect_height, int x1,
     }
 }
 
-void glitch(sil::Image& image, int n_glitches = 100, int max_width = 30, int max_height = 10){ // ⭐⭐⭐ Glitch 17
+void glitch(sil::Image& image, int n_glitches = 100, int max_width = 30, int max_height = 10){ // ⭐⭐⭐ Glitch
     if (max_width>image.width())
         max_width = image.width();
     if (max_height>image.height())
@@ -245,6 +246,71 @@ void glitch(sil::Image& image, int n_glitches = 100, int max_width = 30, int max
     }
 }
 
+float brightness(glm::vec3 const& color){ // Luminance d'une couleur
+    return 0.2126f * color.r + 0.7152f * color.g + 0.0722f * color.b;
+}
+
+void sort_pixels(sil::Image& image){ // ⭐⭐⭐ Tri de pixels 18
+    std::vector<glm::vec3> v = image.pixels();
+    std::sort(image.pixels().begin(), image.pixels().end(), [](glm::vec3 const& color1, glm::vec3 const& color2)
+    {
+        return brightness(color1) < brightness(color2);
+    });
+}
+
+void sort_pixels_by_row(sil::Image& image){ // Tri de pixels par ligne
+    std::vector<glm::vec3> v = image.pixels();
+    for(int i{0}; i<image.height(); i++){
+        std::sort(image.pixels().begin() + i * image.width(), image.pixels().begin() + (i + 1) * image.width(), [](glm::vec3 const& color1, glm::vec3 const& color2)
+        {
+            return brightness(color1) < brightness(color2);
+        });
+    }
+}
+
+sil::Image gradient_colors(glm::vec3 color1 = {0.f, 1.f, 0.f}, glm::vec3 color2 = {1.f, 0.f, 0.f}, int width = 300, int height = 200){ // Dégradé de couleurs
+    sil::Image image{width, height};
+    float progression{0.f};
+    for (int x{0}; x < width; x++)
+    {
+        for (int y{0}; y < height; y++)
+        {
+            progression = static_cast<float>(x)/(static_cast<float>(width) - 1);
+            image.pixel(x, y) = glm::vec3{progression * color1 + (1.f - progression) * color2};
+        }
+    }
+    return image;
+}
+
+// OKLAB A FAIRE
+
+int iter_mandelbrot(std::complex<float> c, int iter_max = 10){
+    std::complex<float> z{0.f, 0.f};
+    int n = 0;
+    while (std::abs(z) <= 2){
+        n++;
+        if (n>=iter_max)
+            break;
+        z = z * z + c;
+    }
+    return n;
+}
+
+sil::Image mandelbrot(int iter_max = 50, int width = 500, int height = 500){ // ⭐⭐⭐(⭐) Fractale de Mandelbrot 19
+    sil::Image image{width, height};
+
+    for (int x{0}; x < width; x++)
+    {
+        for (int y{0}; y < height; y++)
+        {
+            std::complex<float> z{x/(width - 1.f) * 4.f - 2.f, y/(height - 1.f) * 4.f - 2.f};
+            image.pixel(x, y) = glm::vec3{iter_mandelbrot(z, iter_max)/static_cast<float>(iter_max)};
+        }
+    }
+    
+    return image;
+}
+
 int main()
 {
     std::cout<<"Bonjour"<<std::endl;
@@ -253,10 +319,10 @@ int main()
     //sil::Image image{"images/photo_faible_contraste.jpg"};
     //sil::Image image{"images/photo.jpg"};
 
-    glitch(image);
-    //image = rosace();
+    //sort_pixels_by_row(image);
+    image = mandelbrot();
 
     image.save("output/pouet.png");
 }
 
-// 17/31
+// 18/31
