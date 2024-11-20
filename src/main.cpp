@@ -3,8 +3,9 @@
 #include <cmath>
 #include <complex>
 #include <glm/gtx/matrix_transform_2d.hpp>
-
 #include <vector>
+#include <algorithm>
+
 #include <string>
 #include <iostream>
 
@@ -553,47 +554,145 @@ void box_difference(sil::Image& image, float T = 25.f, float treshold = 0.1f, in
     normalize(image);
 }
 
-bool same_elements(std::vector<glm::vec3> v1, std::vector<glm::vec3> v2)
-{
-    std::sort(v1.begin(), v1.end());
-    std::sort(v2.begin(), v2.end());
-    return v1 == v2;
+bool elements_in(std::vector<glm::vec3> const& v1, std::vector<glm::vec3> const& v2){ // Vérifie si tous les éléments de v1 sont dans v2
+    int n = v1.size();
+    int m = v2.size();
+    if (n > m)
+        return false;
+
+    for (int i{0}; i < n; i++){
+        bool is_in{false};
+        glm::vec3 elem{v1[i]};
+        for (int j{0}; j < m; j++){
+            if (elem == v2[j]){
+                is_in = true;
+                break;
+            }
+        }
+        if (!is_in)
+            return false;
+    }
+    return true;
 }
 
-std::vector<glm::vec3> k_means(std::vector<glm::vec3> v, int k, int max_iter = 100){
-    std::vector<glm::vec3> means{};
-    std::vector<glm::vec3> means_new{};
+bool same_elements(std::vector<glm::vec3> const& v1, std::vector<glm::vec3> const& v2){ // Vérifie si v1 et v2 ont les mêmes éléments
+    if (v1.size() != v2.size())
+        return false;
 
-    for (int i{0}; i < k; i++){
-        means.push_back(v[i]);
+    if (!elements_in(v1, v2))
+        return false;
+
+    return elements_in(v2, v1);
+}
+
+std::vector<glm::vec3> k_means(std::vector<glm::vec3> const& v, int k = 2, int max_iter = 100){ // Trouve les k couleurs les plus représentatives dans v
+    std::vector<glm::vec3> means(k, glm::vec3{0.f});
+    std::vector<glm::vec3> means_new(k, glm::vec3{0.f});
+    std::vector<glm::vec3> sums(k, glm::vec3{0.f});
+    std::vector<float> numbers(k, 0.f);
+
+    for (int i{0}; i < k; i++){ // Initialisation des moyennes (aléatoire)
+        means[i] = glm::vec3{random_float(0.f, 1.f)};
     }
 
     for (int i{0}; i < max_iter; i++){
-        for (int j{0}; j < max_iter; j++){
-            
+        means_new = std::vector<glm::vec3>(k, glm::vec3{0.f});
+        numbers = std::vector<float>(k, 0.f);
+
+        // On associe chaque element de v à une moyenne et on les ajoute aux sommes
+        for (int j{0}; j < v.size(); j++){
+            glm::vec3 color_j{v[j]};
+
+            // On cherche la moyenne la plus proche
+            int nearest_l = 0;
+            float nearest_distance = glm::distance(color_j, means[0]);
+            for (int l{1}; l < k; l++){
+                float distance = glm::distance(color_j, means[l]);
+                if (distance < nearest_distance){
+                    nearest_l = l;
+                    nearest_distance = distance;
+                }
+            }
+
+            //On ajoute la couleur
+            means_new[nearest_l] += color_j;
+            numbers[nearest_l]++;
+        }
+
+        // On calcule chaque nouvelle moyenne
+        for (int i{0}; i < k; i++){
+            if (numbers[i] > 0)
+                means_new[i] /= numbers[i];
+            else
+                means_new[i] = glm::vec3{random_float(0.f, 1.f)};
+        }
+
+        if (same_elements(means, means_new)){
+            //std::cout << "Iterations : " << i + 1 << std::endl;
+            break;
+        }
+
+        means = means_new;
+    }
+
+    return means;
+}
+
+void set_colors(sil::Image& image, std::vector<glm::vec3> v){ // Transforme les couleurs de l'image en la couleur la plus proche dans v
+    for (int x{0}; x < image.width(); x++)
+    {
+        for (int y{0}; y < image.height(); y++)
+        {
+            glm::vec3 color = image.pixel(x, y);
+
+            // On cherche la couleur
+            int nearest_l = 0;
+            float nearest_distance = glm::distance(color, v[0]);
+            for (int l{1}; l < v.size(); l++){
+                float distance = glm::distance(color, v[l]);
+                if (distance < nearest_distance){
+                    nearest_l = l;
+                    nearest_distance = distance;
+                }
+            }
+
+            image.pixel(x, y) = v[nearest_l];
         }
     }
 }
 
+void k_colors(sil::Image& image, int k = 2, int max_iter = 100){ // ⭐⭐⭐⭐⭐ K-means : trouver les couleurs les plus présentes dans une image 27
+    set_colors(image, k_means(image.pixels(), k, max_iter));
+}
+
 int main()
 {
-    std::cout<<"Preparation"<<std::endl;
+    std::cout << "Preparation" << std::endl;
 
-    std::vector<std::vector<float>> kernel_box_blur_10{create_box_blur_kernel(10)};
+    //std::vector<std::vector<float>> kernel_box_blur_10{create_box_blur_kernel(10)};
     //std::vector<std::vector<float>> kernel_box_blur_50{create_box_blur_kernel(50)};
     
     //sil::Image image{"images/logo.png"};
     //sil::Image image{"images/photo_faible_contraste.jpg"};
     sil::Image image{"images/photo.jpg"};
 
-    std::cout<<"Execution"<<std::endl;
+    std::cout << "Execution" << std::endl;
+    
+    k_colors(image, 16);
 
-    box_difference(image);
+    /*
+    std::vector<glm::vec3> moyennes = k_means(image.pixels(), 3);
+    for(glm::vec3 c : moyennes){
+        std::cout<< "(" << c.r << ", " << c.g << ", " << c.b << ")" << std::endl;
+    }
+    */
+
+    //box_difference(image);
     //image = mandelbrot();
 
     image.save("output/pouet.png");
 
-    std::cout<<"Fin"<<std::endl;
+    std::cout << "Fin" << std::endl;
 }
 
 // 26/31
