@@ -518,14 +518,14 @@ std::vector<std::vector<float>> create_column_blur_kernel(int offset = 1){
     return create_rectangle_blur_kernel(1, offset);
 }
 
-void convolution_box_blur(sil::Image& image, int offset = 1){ // ⭐⭐ Filtres séparables 25
+void convolution_box_blur(sil::Image& image, int offset = 1){ // ⭐⭐ Filtres séparables
     convolution(image, create_row_blur_kernel(offset));
     convolution(image, create_column_blur_kernel(offset));
 }
 
 // (1 + T) * G1 - T * G2
 
-void box_difference(sil::Image& image, float T = 25.f, float treshold = 0.1f, int blur1 = 3, int blur2 = 4){ // ⭐⭐ Différence de gaussiennes (de box_blur en l'occurence) 26
+void box_difference(sil::Image& image, float T = 25.f, float treshold = 0.1f, int blur1 = 3, int blur2 = 4){ // ⭐⭐ Différence de gaussiennes (de box_blur en l'occurence)
     sil::Image image_blur1{image};
     sil::Image image_blur2{image};
 
@@ -695,5 +695,5 @@ int main()
     std::cout << "Fin" << std::endl;
 }
 
-// 26/31
+// 27/31
 // OKLAB + gaussian blur, dithering général
