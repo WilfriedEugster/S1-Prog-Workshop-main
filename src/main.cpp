@@ -4,6 +4,7 @@
 #include <complex>
 #include <glm/gtx/matrix_transform_2d.hpp>
 
+#include <vector>
 #include <string>
 #include <iostream>
 
@@ -319,7 +320,7 @@ float bayer_matrix_4x4[][4] = {
     {  0.4375, -0.0625,  0.3125, -0.1875 },
 };
 
-void dithering_4x4(sil::Image& image, float r = 1.f){ // ⭐⭐⭐(⭐) Tramage 20
+void dithering_4x4(sil::Image& image, float r = 1.f){ // ⭐⭐⭐(⭐) Tramage
     float gray_scale = 0.f;
     for (int x{0}; x < image.width(); x++)
     {
@@ -422,39 +423,178 @@ glm::vec2 rotated(glm::vec2 point, glm::vec2 center_of_rotation, float angle)
     return glm::vec2{glm::rotate(glm::mat3{1.f}, angle) * glm::vec3{point - center_of_rotation, 0.f}} + center_of_rotation;
 }
 
-void vortex(sil::Image& image, float intensity = -0.08f){ // ⭐⭐⭐⭐ Vortex 22
+void vortex(sil::Image& image, float intensity = 0.1f){ // ⭐⭐⭐⭐ Vortex
     sil::Image image_copy{image};
     image = sil::Image{image.width(), image.height()};
+
     glm::vec2 coordinates{0.f, 0.f};
-    float coor_x{0.f}, coor_y{0.f};
     glm::vec2 center{image.width()/2.f, image.height()/2.f};
     float distance = 0.f;
+    float coor_x{0.f}, coor_y{0.f};
+
     for (int x{0}; x < image.width(); x++)
     {
         for (int y{0}; y < image.height(); y++)
         {
-            distance = pow(pow(center.x - x, 2) + pow(center.y - y, 2), 0.5);
             coordinates = rotated(glm::vec2{x, y}, center, distance*intensity);
+            distance = glm::distance(center, coordinates);
             coor_x = static_cast<int>(coordinates.x);
             coor_y = static_cast<int>(coordinates.y);
             if (0 <= coor_x && coor_x < image.width() && 0 <= coor_y && coor_y < image.height())
-                image.pixel(coor_x, coor_y) = image_copy.pixel(x, y);
+                image.pixel(x, y) = image_copy.pixel(coor_x, coor_y);
+        }
+    }
+}
+
+void convolution(sil::Image& image, std::vector<std::vector<float>> kernel){ // ⭐⭐⭐⭐ Convolutions
+    sil::Image image_copy{image};
+    glm::vec3 result{0.f};
+    unsigned int n{kernel[0].size()}, m{kernel.size()};
+    unsigned int offset_u{n/2}, offset_v{n/2};
+    int x2{0}, y2{0};
+    int width{image.width()}, height{image.height()};
+    for (int x{0}; x < width; x++)
+    {
+        for (int y{0}; y < height; y++)
+        {
+            result = glm::vec3{0.f};
+            for (int v{0}; v < m; v++){
+                for (int u{0}; u < n; u++){
+                    x2 = x + u - offset_u;
+                    y2 = y + v - offset_v;
+
+                    if (x2 < 0) 
+                        x2 = 0;
+                    else if (width <= x2) 
+                        x2 = width - 1;
+
+                    if (y2 < 0) 
+                        y2 = 0;
+                    else if (height <= y2) 
+                        y2 = height - 1;
+
+                    result += image_copy.pixel(x2, y2) * kernel[v][u];
+                }
+            }
+            image.pixel(x, y) = result;
+        }
+    }
+}
+
+std::vector<std::vector<float>> create_rectangle_blur_kernel(int offset_u = 1, int offset_v = 1){
+    int n = 1 + offset_u * 2;
+    int m = 1 + offset_v * 2;
+    std::vector<float> row(n, 1.f/(n * m));
+    return std::vector<std::vector<float>>(m, row);
+}
+
+std::vector<std::vector<float>> create_box_blur_kernel(int offset = 1){
+    return create_rectangle_blur_kernel(offset, offset);
+}
+
+// ⭐ Netteté, Contours, etc.
+
+std::vector<std::vector<float>> kernel_emboss {{
+    {-2.f, -1.f, 0.f},
+    {-1.f, 1.f, 1.f},
+    {0.f, 1.f, 2.f}}};
+
+std::vector<std::vector<float>> kernel_outline {{
+    {-1.f, -1.f, -1.f},
+    {-1.f, 8.f, -1.f},
+    {-1.f, -1.f, -1.f}}};
+
+std::vector<std::vector<float>> kernel_sharpen {{
+    {0.f, -1.f, 0.f},
+    {-1.f, 5.f, -1.f},
+    {0.f, -1.f, 0.f}}};
+
+std::vector<std::vector<float>> create_row_blur_kernel(int offset = 1){
+    return create_rectangle_blur_kernel(offset, 1);
+}
+
+std::vector<std::vector<float>> create_column_blur_kernel(int offset = 1){
+    return create_rectangle_blur_kernel(1, offset);
+}
+
+void convolution_box_blur(sil::Image& image, int offset = 1){ // ⭐⭐ Filtres séparables 25
+    convolution(image, create_row_blur_kernel(offset));
+    convolution(image, create_column_blur_kernel(offset));
+}
+
+// (1 + T) * G1 - T * G2
+
+void box_difference(sil::Image& image, float T = 25.f, float treshold = 0.1f, int blur1 = 3, int blur2 = 4){ // ⭐⭐ Différence de gaussiennes (de box_blur en l'occurence) 26
+    sil::Image image_blur1{image};
+    sil::Image image_blur2{image};
+
+    convolution_box_blur(image_blur1, blur1);
+    convolution_box_blur(image_blur2, blur2);
+
+    float luminance1{0.f}, luminance2{0.f}, luminance_new{0.f};
+
+    for (int x{0}; x < image.width(); x++)
+    {
+        for (int y{0}; y < image.height(); y++)
+        {
+            luminance1 = brightness(image_blur1.pixel(x, y));
+            luminance2 = brightness(image_blur2.pixel(x, y));
+            luminance_new = (T + 1) * luminance1 - T * luminance2;
+
+            if (luminance_new > treshold)
+                luminance_new = 1.f;
+            else
+                luminance_new = 0.f;
+
+            image.pixel(x, y) = glm::vec3(luminance_new);
+        }
+    }
+
+    normalize(image);
+}
+
+bool same_elements(std::vector<glm::vec3> v1, std::vector<glm::vec3> v2)
+{
+    std::sort(v1.begin(), v1.end());
+    std::sort(v2.begin(), v2.end());
+    return v1 == v2;
+}
+
+std::vector<glm::vec3> k_means(std::vector<glm::vec3> v, int k, int max_iter = 100){
+    std::vector<glm::vec3> means{};
+    std::vector<glm::vec3> means_new{};
+
+    for (int i{0}; i < k; i++){
+        means.push_back(v[i]);
+    }
+
+    for (int i{0}; i < max_iter; i++){
+        for (int j{0}; j < max_iter; j++){
+            
         }
     }
 }
 
 int main()
 {
-    std::cout<<"Bonjour"<<std::endl;
-    
-    sil::Image image{"images/logo.png"};
-    //sil::Image image{"images/photo_faible_contraste.jpg"};
-    //sil::Image image{"images/photo.jpg"};
+    std::cout<<"Preparation"<<std::endl;
 
-    vortex(image);
+    std::vector<std::vector<float>> kernel_box_blur_10{create_box_blur_kernel(10)};
+    //std::vector<std::vector<float>> kernel_box_blur_50{create_box_blur_kernel(50)};
+    
+    //sil::Image image{"images/logo.png"};
+    //sil::Image image{"images/photo_faible_contraste.jpg"};
+    sil::Image image{"images/photo.jpg"};
+
+    std::cout<<"Execution"<<std::endl;
+
+    box_difference(image);
     //image = mandelbrot();
 
     image.save("output/pouet.png");
+
+    std::cout<<"Fin"<<std::endl;
 }
 
-// 22/31
+// 26/31
+// OKLAB + gaussian blur, dithering général
