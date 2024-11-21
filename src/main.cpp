@@ -661,8 +661,161 @@ void set_colors(sil::Image& image, std::vector<glm::vec3> v){ // Transforme les 
     }
 }
 
-void k_colors(sil::Image& image, int k = 2, int max_iter = 100){ // ⭐⭐⭐⭐⭐ K-means : trouver les couleurs les plus présentes dans une image 27
+void k_colors(sil::Image& image, int k = 2, int max_iter = 100){ // ⭐⭐⭐⭐⭐ K-means : trouver les couleurs les plus présentes dans une image
     set_colors(image, k_means(image.pixels(), k, max_iter));
+}
+
+template <typename T> int index_min(std::vector<T> v){
+    int i_min{0};
+    T val_min{v[0]};
+    for (int i{1}; i < v.size(); i++){
+        T val = v[i];
+        if (val < val_min){
+            i_min = i;
+            val_min = val;
+        }
+    }
+    return i_min;
+}
+
+glm::vec3 vec3_mean(std::vector<glm::vec3> v){
+    glm::vec3 v_sum{0.f};
+    for (glm::vec3 val : v){
+        v_sum += val;
+    }
+    return v_sum/static_cast<float>(v.size());
+}
+
+float vec3_std(std::vector<glm::vec3> v, glm::vec3 v_mean){
+    float v_std{0.f};
+    for (glm::vec3 val : v){
+        v_std += glm::distance(val, v_mean);
+    }
+    return v_std/static_cast<float>(v.size());
+}
+
+void statistics_square(sil::Image const& image, int left_x, int up_y, int side_size, std::vector<glm::vec3>& means, std::vector<float>& st_deviations){
+    int limit_x{image.width()}, limit_y{image.height()};
+    std::vector<glm::vec3> v{};
+
+    for (int x{left_x}; x < left_x + side_size; x++)
+        for (int y{up_y}; y < up_y + side_size; y++){
+            int x2{x}, y2{y};
+
+            if (x2 < 0)
+                x2 = 0;
+            else if (limit_x <= x2)
+                x2 = limit_x - 1;
+
+            if (y2 < 0)
+                y2 = 0;
+            else if (limit_y <= y2)
+                y2 = limit_y - 1;
+
+            v.push_back(image.pixel(x2, y2));
+        }
+
+    glm::vec3 v_mean = vec3_mean(v);
+    means.push_back(v_mean);
+
+    st_deviations.push_back(vec3_std(v, v_mean));
+}
+
+glm::vec3 kuwahara_pixel(sil::Image const& image, int offset, int x, int y){
+    std::vector<glm::vec3> means{};
+    std::vector<float> st_deviations{};
+    
+    statistics_square(image, x - offset, y - offset, offset + 1, means, st_deviations); // Haut gauche
+    statistics_square(image, x,          y - offset, offset + 1, means, st_deviations); // Haut droite
+    statistics_square(image, x - offset, y,          offset + 1, means, st_deviations); // Bas  gauche
+    statistics_square(image, x,          y,          offset + 1, means, st_deviations); // Bas  droite
+    
+    return means[index_min(st_deviations)];
+}
+
+void kuwahara_filter(sil::Image& image, int offset = 2){ // ⭐⭐⭐⭐⭐ Filtre de Kuwahara (effet peinture à l'huile) 28
+    sil::Image image_copy{image};
+    for (int x{0}; x < image.width(); x++)
+    {
+        for (int y{0}; y < image.height(); y++)
+        {
+            image.pixel(x, y) = kuwahara_pixel(image_copy, offset, x, y);
+        }
+    }
+}
+
+void diamond_step(sil::Image& image, int half_size, int x, int y, int rand_range){
+    glm::vec3 sum{0.f};
+    int n = 0;
+
+    if (0 <= x - half_size){
+        sum += image.pixel(x - half_size, y);
+        n++;
+    }
+    if (x + half_size < image.width()){
+        sum += image.pixel(x + half_size, y);
+        n++;
+    }
+    if (0 <= y - half_size){
+        sum += image.pixel(x, y - half_size);
+        n++;
+    }
+    if (y + half_size < image.height()){
+        sum += image.pixel(x, y + half_size);
+        n++;
+    }
+
+    image.pixel(x, y) = sum/static_cast<float>(n) + glm::vec3{random_float(-rand_range, rand_range)};
+}
+
+sil::Image diamond_square(int n = 9, float min_h = 0.f, float max_h = 1.f, int rand_range = 1.f){ // ⭐⭐⭐⭐⭐⭐ Diamond Square 29
+    int square_size = pow(2, n); // Taille d'un carré - 1
+    int map_size = square_size + 1;
+    int n_squares = 1; // Nombre de carrés par ligne
+
+    sil::Image image = sil::Image{map_size, map_size};
+
+    // Initialisation des coins
+    image.pixel(0, 0) = glm::vec3{random_float(min_h, max_h)};
+    image.pixel(square_size, 0) = glm::vec3{random_float(min_h, max_h)};
+    image.pixel(0, square_size) = glm::vec3{random_float(min_h, max_h)};
+    image.pixel(square_size, square_size) = glm::vec3{random_float(min_h, max_h)};
+
+    while (square_size > 1){
+        //int x_first = square_size/2; // Abcisse du centre des carrés de gauche
+        int half_size = square_size/2;
+
+        for (int i = 0; i < n_squares; i++){
+            int x_left = i * square_size; 
+            int x_right = x_left + square_size;
+            int x_center = x_left + half_size;
+
+            for (int j = 0; j < n_squares; j++){
+                int y_up = j * square_size; 
+                int y_down = y_up + square_size;
+                int y_center = y_up + half_size;
+                
+                image.pixel(x_center, y_center) = glm::vec3{random_float(-rand_range, rand_range)} + (
+                    image.pixel(x_left, y_up) +
+                    image.pixel(x_right, y_up) + 
+                    image.pixel(x_left, y_down) + 
+                    image.pixel(x_right, y_down))/4.f;
+                
+                if (i == 0)
+                    diamond_step(image, half_size, x_left, y_center, rand_range); // Gauche
+                if (j == 0)
+                    diamond_step(image, half_size, x_center, y_up, rand_range); // Haut
+                diamond_step(image, half_size, x_right, y_center, rand_range); // Droite
+                diamond_step(image, half_size, x_center, y_down, rand_range); // Bas
+            }
+        }
+
+        rand_range /= 2;
+        n_squares *= 2;
+        square_size = square_size/2;
+    }
+
+    return image;
 }
 
 int main()
@@ -677,23 +830,14 @@ int main()
     sil::Image image{"images/photo.jpg"};
 
     std::cout << "Execution" << std::endl;
-    
-    k_colors(image, 16);
 
-    /*
-    std::vector<glm::vec3> moyennes = k_means(image.pixels(), 3);
-    for(glm::vec3 c : moyennes){
-        std::cout<< "(" << c.r << ", " << c.g << ", " << c.b << ")" << std::endl;
-    }
-    */
-
-    //box_difference(image);
-    //image = mandelbrot();
+    //kuwahara_filter(image);
+    image = diamond_square();
 
     image.save("output/pouet.png");
 
     std::cout << "Fin" << std::endl;
 }
 
-// 27/31
+// 28/31
 // OKLAB + gaussian blur, dithering général
