@@ -107,7 +107,7 @@ void rgb_split(sil::Image& image, int decalage = 30){ // ⭐⭐ RGB split
     }
 }
 
-void change_brightness(sil::Image& image, int increase = 1){ // ⭐⭐ Luminosité
+void change_brightness(sil::Image& image, float increase = 1.f){ // ⭐⭐ Luminosité
     // Plus increase est grand, plus l'image est lumineuse
     // Plus increase est loin en dessous de 0, plus l'image est sombre
     float power = pow(2, -increase);
@@ -523,8 +523,6 @@ void convolution_box_blur(sil::Image& image, int offset = 1){ // ⭐⭐ Filtres 
     convolution(image, create_column_blur_kernel(offset));
 }
 
-// (1 + T) * G1 - T * G2
-
 void box_difference(sil::Image& image, float T = 25.f, float treshold = 0.1f, int blur1 = 3, int blur2 = 4){ // ⭐⭐ Différence de gaussiennes (de box_blur en l'occurence)
     sil::Image image_blur1{image};
     sil::Image image_blur2{image};
@@ -831,9 +829,10 @@ int main()
 
     std::cout << "Execution" << std::endl;
 
-    //kuwahara_filter(image);
-    image = diamond_square();
+    kuwahara_filter(image, 3);
+    //image = gradient_colors(glm::vec3{0.f, 0.f, 1.f}, glm::vec3{1.f, 1.f, 0.f});
 
+    image.save("output/.png");
     image.save("output/pouet.png");
 
     std::cout << "Fin" << std::endl;
