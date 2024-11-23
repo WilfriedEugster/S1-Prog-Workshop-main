@@ -1,19 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="M:\Documents\S1-Prog-Workshop-main\lib\sil\lib\img\lib\stb_image\stb_image.cpp">
+    <ClCompile Include="C:\Users\Wilfried Eugster\Documents\IMAC\Algo_prog\S1-Prog-Workshop-main\lib\sil\lib\img\lib\stb_image\stb_image.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="M:\Documents\S1-Prog-Workshop-main\lib\sil\lib\img\lib\stb_image\stb_image_write.cpp">
+    <ClCompile Include="C:\Users\Wilfried Eugster\Documents\IMAC\Algo_prog\S1-Prog-Workshop-main\lib\sil\lib\img\lib\stb_image\stb_image_write.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="M:\Documents\S1-Prog-Workshop-main\lib\sil\lib\img\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\Wilfried Eugster\Documents\IMAC\Algo_prog\S1-Prog-Workshop-main\lib\sil\lib\img\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{2CF1FF32-8136-3792-8150-9C8EFE0DE171}</UniqueIdentifier>
+      <UniqueIdentifier>{7532F7ED-18E2-3C4D-88A0-0FB213D8C394}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

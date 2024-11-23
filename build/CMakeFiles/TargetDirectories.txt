@@ -1,13 +1,13 @@
-M:/Documents/S1-Prog-Workshop-main/build/CMakeFiles/ImageEditor.dir
-M:/Documents/S1-Prog-Workshop-main/build/CMakeFiles/INSTALL.dir
-M:/Documents/S1-Prog-Workshop-main/build/CMakeFiles/ALL_BUILD.dir
-M:/Documents/S1-Prog-Workshop-main/build/CMakeFiles/ZERO_CHECK.dir
-M:/Documents/S1-Prog-Workshop-main/build/lib/sil/CMakeFiles/sil.dir
-M:/Documents/S1-Prog-Workshop-main/build/lib/sil/CMakeFiles/INSTALL.dir
-M:/Documents/S1-Prog-Workshop-main/build/lib/sil/CMakeFiles/ALL_BUILD.dir
-M:/Documents/S1-Prog-Workshop-main/build/lib/sil/lib/glm/CMakeFiles/INSTALL.dir
-M:/Documents/S1-Prog-Workshop-main/build/lib/sil/lib/glm/CMakeFiles/ALL_BUILD.dir
-M:/Documents/S1-Prog-Workshop-main/build/lib/sil/lib/glm/glm/CMakeFiles/INSTALL.dir
-M:/Documents/S1-Prog-Workshop-main/build/lib/sil/lib/img/CMakeFiles/img.dir
-M:/Documents/S1-Prog-Workshop-main/build/lib/sil/lib/img/CMakeFiles/stb_image.dir
-M:/Documents/S1-Prog-Workshop-main/build/lib/sil/lib/img/CMakeFiles/INSTALL.dir
+C:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main/build/CMakeFiles/ImageEditor.dir
+C:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main/build/CMakeFiles/INSTALL.dir
+C:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main/build/CMakeFiles/ZERO_CHECK.dir
+C:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main/build/lib/sil/CMakeFiles/sil.dir
+C:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main/build/lib/sil/CMakeFiles/INSTALL.dir
+C:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main/build/lib/sil/CMakeFiles/ALL_BUILD.dir
+C:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main/build/lib/sil/lib/glm/CMakeFiles/INSTALL.dir
+C:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main/build/lib/sil/lib/glm/CMakeFiles/ALL_BUILD.dir
+C:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main/build/lib/sil/lib/glm/glm/CMakeFiles/INSTALL.dir
+C:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main/build/lib/sil/lib/img/CMakeFiles/img.dir
+C:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main/build/lib/sil/lib/img/CMakeFiles/stb_image.dir
+C:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main/build/lib/sil/lib/img/CMakeFiles/INSTALL.dir

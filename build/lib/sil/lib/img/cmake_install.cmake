@@ -1,4 +1,4 @@
-# Install script for directory: M:/Documents/S1-Prog-Workshop-main/lib/sil/lib/img
+# Install script for directory: C:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main/lib/sil/lib/img
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

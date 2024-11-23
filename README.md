@@ -223,4 +223,8 @@ L'effet est un peu différent de l'exemple aussi.
 
 ## ⭐⭐⭐⭐⭐⭐ Diamond Square
 
+![](output/diamond_square.png)
+
 ### ⭐⭐ Colorer la height map
+
+![](output/color_height_map.png)

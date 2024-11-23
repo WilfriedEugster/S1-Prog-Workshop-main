@@ -742,31 +742,42 @@ void kuwahara_filter(sil::Image& image, int offset = 2){ // ⭐⭐⭐⭐⭐ Filt
     }
 }
 
-void diamond_step(sil::Image& image, int half_size, int x, int y, int rand_range){
-    glm::vec3 sum{0.f};
+void diamond_step(sil::Image& image, int half_size, int x, int y, float rand_range){
+    float sum{0.f};
     int n = 0;
 
+    bool affiche{x == 128 && y == 256};
+
     if (0 <= x - half_size){
-        sum += image.pixel(x - half_size, y);
+        sum += image.pixel(x - half_size, y).r;
         n++;
+        if (affiche) std::cout << "pixel1=" << image.pixel(x - half_size, y).r << std::endl;
     }
     if (x + half_size < image.width()){
-        sum += image.pixel(x + half_size, y);
+        sum += image.pixel(x + half_size, y).r;
         n++;
+        if (affiche) std::cout << "pixel2=" << image.pixel(x + half_size, y).r << std::endl;
     }
     if (0 <= y - half_size){
-        sum += image.pixel(x, y - half_size);
+        sum += image.pixel(x, y - half_size).r;
         n++;
+        if (affiche) std::cout << "pixel3=" << image.pixel(x, y - half_size).r << std::endl;
     }
     if (y + half_size < image.height()){
-        sum += image.pixel(x, y + half_size);
+        sum += image.pixel(x, y + half_size).r;
         n++;
+        if (affiche) std::cout << "pixel4=" << image.pixel(x, y + half_size).r << std::endl;
     }
 
-    image.pixel(x, y) = sum/static_cast<float>(n) + glm::vec3{random_float(-rand_range, rand_range)};
+    if (affiche){
+        std::cout << "sum=" << sum << ", n=" << n << ", res=" << sum/static_cast<float>(n) << std::endl;
+
+    }
+
+    image.pixel(x, y) = glm::vec3{sum/static_cast<float>(n) + random_float(-rand_range, rand_range)};
 }
 
-sil::Image diamond_square(int n = 9, float min_h = 0.f, float max_h = 1.f, int rand_range = 1.f){ // ⭐⭐⭐⭐⭐⭐ Diamond Square 29
+sil::Image diamond_square(int n = 9, float min_h = 0.f, float max_h = 1.f, float rand_range = 0.5f){ // ⭐⭐⭐⭐⭐⭐ Diamond Square 29
     int square_size = pow(2, n); // Taille d'un carré - 1
     int map_size = square_size + 1;
     int n_squares = 1; // Nombre de carrés par ligne
@@ -798,6 +809,18 @@ sil::Image diamond_square(int n = 9, float min_h = 0.f, float max_h = 1.f, int r
                     image.pixel(x_right, y_up) + 
                     image.pixel(x_left, y_down) + 
                     image.pixel(x_right, y_down))/4.f;
+            }
+        }
+
+        for (int i = 0; i < n_squares; i++){
+            int x_left = i * square_size; 
+            int x_right = x_left + square_size;
+            int x_center = x_left + half_size;
+
+            for (int j = 0; j < n_squares; j++){
+                int y_up = j * square_size; 
+                int y_down = y_up + square_size;
+                int y_center = y_up + half_size;
                 
                 if (i == 0)
                     diamond_step(image, half_size, x_left, y_center, rand_range); // Gauche
@@ -816,6 +839,29 @@ sil::Image diamond_square(int n = 9, float min_h = 0.f, float max_h = 1.f, int r
     return image;
 }
 
+float round_to(float x, int decimals){
+    int coeff = pow(10, decimals);
+    return std::round(x * coeff)/coeff;
+}
+
+void color_height_map(sil::Image& image, float treshold = 0.5f){ // ⭐⭐ Colorer la height map
+    for (glm::vec3& color : image.pixels())
+    {
+        float pixel_height{color.r};
+        color.r = 0.f;
+        if (pixel_height > treshold){
+            color.g = 1.f - pixel_height;
+            color.b = 0.f;
+        }
+        else{
+            color.g = 0.f;
+        }
+        color.r = round_to(color.r, 1);
+        color.g = round_to(color.g, 1);
+        color.b = round_to(color.b, 1);
+    }
+}
+
 int main()
 {
     std::cout << "Preparation" << std::endl;
@@ -825,18 +871,16 @@ int main()
     
     //sil::Image image{"images/logo.png"};
     //sil::Image image{"images/photo_faible_contraste.jpg"};
-    sil::Image image{"images/photo.jpg"};
+    //sil::Image image{"images/photo.jpg"};
+    sil::Image image{"output/diamond_square.png"};
 
     std::cout << "Execution" << std::endl;
 
-    kuwahara_filter(image, 3);
-    //image = gradient_colors(glm::vec3{0.f, 0.f, 1.f}, glm::vec3{1.f, 1.f, 0.f});
+    color_height_map(image);
+    //image = diamond_square();
 
-    image.save("output/.png");
+    image.save("output/color_height_map.png");
     image.save("output/pouet.png");
 
     std::cout << "Fin" << std::endl;
 }
-
-// 28/31
-// OKLAB + gaussian blur, dithering général

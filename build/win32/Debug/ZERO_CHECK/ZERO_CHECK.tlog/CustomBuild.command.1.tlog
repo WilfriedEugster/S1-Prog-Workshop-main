@@ -1,0 +1,10 @@
+^C:\USERS\WILFRIED EUGSTER\DOCUMENTS\IMAC\ALGO_PROG\S1-PROG-WORKSHOP-MAIN\BUILD\CMAKEFILES\1392FCE036FFD91A1F2E9D6BCA819F1C\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" "-SC:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main" "-BC:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main/build/ImageEditor.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

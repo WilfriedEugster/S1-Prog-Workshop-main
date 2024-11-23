@@ -1,4 +1,4 @@
-# Install script for directory: M:/Documents/S1-Prog-Workshop-main
+# Install script for directory: C:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("M:/Documents/S1-Prog-Workshop-main/build/lib/sil/cmake_install.cmake")
+  include("C:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main/build/lib/sil/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "M:/Documents/S1-Prog-Workshop-main/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

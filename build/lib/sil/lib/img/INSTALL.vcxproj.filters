@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="M:\Documents\S1-Prog-Workshop-main\build\CMakeFiles\882eb5dcf11090472164413e828b1e46\INSTALL_force.rule">
+    <CustomBuild Include="C:\Users\Wilfried Eugster\Documents\IMAC\Algo_prog\S1-Prog-Workshop-main\build\CMakeFiles\b1ccfe9e849a5c81fd0909a211ef2b79\INSTALL_force.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{98A428C6-21C1-3CBC-AD1B-66543DB372C4}</UniqueIdentifier>
+      <UniqueIdentifier>{6CB5C6DF-6AAA-367C-AACB-B0E536600B6D}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

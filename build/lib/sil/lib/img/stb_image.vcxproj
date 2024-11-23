@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <PreferredToolArchitecture>x86</PreferredToolArchitecture>
   </PropertyGroup>
@@ -22,9 +22,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{04E5D018-98B9-3814-9705-560A9ACFC898}</ProjectGuid>
+    <ProjectGuid>{F7004C5C-FE75-39E9-977C-3F9ECE555F9D}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
     <Platform>win32</Platform>
     <ProjectName>stb_image</ProjectName>
     <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
@@ -33,22 +33,22 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -59,19 +59,19 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">M:\Documents\S1-Prog-Workshop-main\build\lib\sil\lib\img\Debug\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">C:\Users\Wilfried Eugster\Documents\IMAC\Algo_prog\S1-Prog-Workshop-main\build\lib\sil\lib\img\Debug\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">stb_image.dir\Debug\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">stb_image</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|win32'">M:\Documents\S1-Prog-Workshop-main\build\lib\sil\lib\img\Release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|win32'">C:\Users\Wilfried Eugster\Documents\IMAC\Algo_prog\S1-Prog-Workshop-main\build\lib\sil\lib\img\Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|win32'">stb_image.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|win32'">stb_image</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|win32'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">M:\Documents\S1-Prog-Workshop-main\build\lib\sil\lib\img\MinSizeRel\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">C:\Users\Wilfried Eugster\Documents\IMAC\Algo_prog\S1-Prog-Workshop-main\build\lib\sil\lib\img\MinSizeRel\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">stb_image.dir\MinSizeRel\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">stb_image</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">M:\Documents\S1-Prog-Workshop-main\build\lib\sil\lib\img\RelWithDebInfo\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">C:\Users\Wilfried Eugster\Documents\IMAC\Algo_prog\S1-Prog-Workshop-main\build\lib\sil\lib\img\RelWithDebInfo\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">stb_image.dir\RelWithDebInfo\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">stb_image</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">.lib</TargetExt>
@@ -192,10 +192,11 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="M:\Documents\S1-Prog-Workshop-main\lib\sil\lib\img\CMakeLists.txt">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">Building Custom Rule M:/Documents/S1-Prog-Workshop-main/lib/sil/lib/img/CMakeLists.txt</Message>
+    <CustomBuild Include="C:\Users\Wilfried Eugster\Documents\IMAC\Algo_prog\S1-Prog-Workshop-main\lib\sil\lib\img\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">Building Custom Rule C:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main/lib/sil/lib/img/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SM:/Documents/S1-Prog-Workshop-main -BM:/Documents/S1-Prog-Workshop-main/build --check-stamp-file M:/Documents/S1-Prog-Workshop-main/build/lib/sil/lib/img/CMakeFiles/generate.stamp
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" "-SC:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main" "-BC:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main/build" --check-stamp-file "C:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main/build/lib/sil/lib/img/CMakeFiles/generate.stamp"
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -203,12 +204,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">M:\Documents\S1-Prog-Workshop-main\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">M:\Documents\S1-Prog-Workshop-main\build\lib\sil\lib\img\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">C:\Users\Wilfried Eugster\Documents\IMAC\Algo_prog\S1-Prog-Workshop-main\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">C:\Users\Wilfried Eugster\Documents\IMAC\Algo_prog\S1-Prog-Workshop-main\build\lib\sil\lib\img\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|win32'">Building Custom Rule M:/Documents/S1-Prog-Workshop-main/lib/sil/lib/img/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|win32'">Building Custom Rule C:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main/lib/sil/lib/img/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SM:/Documents/S1-Prog-Workshop-main -BM:/Documents/S1-Prog-Workshop-main/build --check-stamp-file M:/Documents/S1-Prog-Workshop-main/build/lib/sil/lib/img/CMakeFiles/generate.stamp
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" "-SC:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main" "-BC:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main/build" --check-stamp-file "C:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main/build/lib/sil/lib/img/CMakeFiles/generate.stamp"
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -216,12 +217,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|win32'">M:\Documents\S1-Prog-Workshop-main\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|win32'">M:\Documents\S1-Prog-Workshop-main\build\lib\sil\lib\img\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|win32'">C:\Users\Wilfried Eugster\Documents\IMAC\Algo_prog\S1-Prog-Workshop-main\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|win32'">C:\Users\Wilfried Eugster\Documents\IMAC\Algo_prog\S1-Prog-Workshop-main\build\lib\sil\lib\img\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">Building Custom Rule M:/Documents/S1-Prog-Workshop-main/lib/sil/lib/img/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">Building Custom Rule C:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main/lib/sil/lib/img/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SM:/Documents/S1-Prog-Workshop-main -BM:/Documents/S1-Prog-Workshop-main/build --check-stamp-file M:/Documents/S1-Prog-Workshop-main/build/lib/sil/lib/img/CMakeFiles/generate.stamp
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" "-SC:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main" "-BC:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main/build" --check-stamp-file "C:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main/build/lib/sil/lib/img/CMakeFiles/generate.stamp"
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -229,12 +230,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">M:\Documents\S1-Prog-Workshop-main\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">M:\Documents\S1-Prog-Workshop-main\build\lib\sil\lib\img\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">C:\Users\Wilfried Eugster\Documents\IMAC\Algo_prog\S1-Prog-Workshop-main\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">C:\Users\Wilfried Eugster\Documents\IMAC\Algo_prog\S1-Prog-Workshop-main\build\lib\sil\lib\img\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">Building Custom Rule M:/Documents/S1-Prog-Workshop-main/lib/sil/lib/img/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">Building Custom Rule C:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main/lib/sil/lib/img/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SM:/Documents/S1-Prog-Workshop-main -BM:/Documents/S1-Prog-Workshop-main/build --check-stamp-file M:/Documents/S1-Prog-Workshop-main/build/lib/sil/lib/img/CMakeFiles/generate.stamp
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" "-SC:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main" "-BC:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main/build" --check-stamp-file "C:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main/build/lib/sil/lib/img/CMakeFiles/generate.stamp"
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -242,18 +243,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">M:\Documents\S1-Prog-Workshop-main\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">M:\Documents\S1-Prog-Workshop-main\build\lib\sil\lib\img\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">C:\Users\Wilfried Eugster\Documents\IMAC\Algo_prog\S1-Prog-Workshop-main\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">C:\Users\Wilfried Eugster\Documents\IMAC\Algo_prog\S1-Prog-Workshop-main\build\lib\sil\lib\img\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="M:\Documents\S1-Prog-Workshop-main\lib\sil\lib\img\lib\stb_image\stb_image.cpp" />
-    <ClCompile Include="M:\Documents\S1-Prog-Workshop-main\lib\sil\lib\img\lib\stb_image\stb_image_write.cpp" />
+    <ClCompile Include="C:\Users\Wilfried Eugster\Documents\IMAC\Algo_prog\S1-Prog-Workshop-main\lib\sil\lib\img\lib\stb_image\stb_image.cpp" />
+    <ClCompile Include="C:\Users\Wilfried Eugster\Documents\IMAC\Algo_prog\S1-Prog-Workshop-main\lib\sil\lib\img\lib\stb_image\stb_image_write.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="M:\Documents\S1-Prog-Workshop-main\build\ZERO_CHECK.vcxproj">
-      <Project>{5074AADE-083B-3895-BD35-DD4A34EB2CAD}</Project>
+    <ProjectReference Include="C:\Users\Wilfried Eugster\Documents\IMAC\Algo_prog\S1-Prog-Workshop-main\build\ZERO_CHECK.vcxproj">
+      <Project>{7DA39428-71DC-36F1-9C7A-5AF2EBB54102}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>

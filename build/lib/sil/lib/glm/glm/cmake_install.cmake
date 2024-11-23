@@ -1,4 +1,4 @@
-# Install script for directory: M:/Documents/S1-Prog-Workshop-main/lib/sil/lib/glm/glm
+# Install script for directory: C:/Users/Wilfried Eugster/Documents/IMAC/Algo_prog/S1-Prog-Workshop-main/lib/sil/lib/glm/glm
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

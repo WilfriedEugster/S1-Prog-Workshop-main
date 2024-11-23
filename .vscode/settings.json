@@ -59,6 +59,19 @@
         "sstream": "cpp",
         "array": "cpp",
         "codecvt": "cpp",
-        "iterator": "cpp"
+        "iterator": "cpp",
+        "atomic": "cpp",
+        "bit": "cpp",
+        "cctype": "cpp",
+        "charconv": "cpp",
+        "clocale": "cpp",
+        "compare": "cpp",
+        "concepts": "cpp",
+        "format": "cpp",
+        "forward_list": "cpp",
+        "mutex": "cpp",
+        "optional": "cpp",
+        "stop_token": "cpp",
+        "thread": "cpp"
     }
 }
